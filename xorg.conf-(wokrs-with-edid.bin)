@@ -1,0 +1,22 @@
+
+Section "Screen"
+	Identifier     "Screen0"
+	Device         "Device0"
+	Monitor        "Monitor0"
+	DefaultDepth    24
+	Option         "CustomEDID" "CRT-0:/etc/X11/edid.bin"
+#	Option         "UseEdid" "False"
+	Option         "TwinView" "0"
+	Option         "metamodes" "1920x1080 +0+0"
+
+	SubSection     "Display"
+		Depth       24
+	EndSubSection
+EndSection
+
+
+Section "Device"
+	Identifier	"Device0"
+#	Option	"NoLogo"	"True"
+EndSection
+
