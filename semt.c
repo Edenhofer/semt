@@ -1,7 +1,6 @@
-#!/home/edh/bin/ctorun
-// This Program was written by Gordian Edenhofer on 04.05.14
+// This Program was written by Gordian Edenhofer on 04/05/14
 // It is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
-// Simple Edit Manipulation Tool
+// Simple Edid Manipulation Tool
 // How To:	semt [Inputfile] [X-Resolution] [Y-Resolution] [Outputfile] [Options]
 
 #include <stdio.h>
@@ -11,8 +10,8 @@
 
 int main(int argc, char *argv[]) {
 
-	int i, c, x_res, y_res, checksum = 0, debug=0;
-	unsigned char edid[127];
+	int i, c, x_res, y_res, checksum = 0, debug = 0;
+	unsigned char edid[128];
 	FILE *fp;
 
 	while ((c = getopt(argc,argv,"dvh")) != -1) {
@@ -21,11 +20,11 @@ int main(int argc, char *argv[]) {
 			debug = 1;
 			break;
 		case 'v':
-			printf("%s: Version 1.0 by Gordian Edenhofer\nThe last revision was made on 04/05/2014 16:09:10\n", argv[0]);
+			printf("%s: Version 1.1	by Gordian Edenhofer\nThe last revision was made on 25/12/2014 15:50:42\n", argv[0]);
 			return 0;
 		case 'h':
 			printf("NAME\n"
-			"\tsemt - Simple Edit Manipulation Tool Version 1.0\n\n"
+			"\tsemt - Simple Edid Manipulation Tool Version 1.1\n\n"
 			"SYNOPSIS\n"
 			"\tsemt [Inputfile] [X-Resolution] [Y-Resolution] [Outputfile] [Options]\n\n"
 			"EXAMPLE\n"
@@ -33,35 +32,40 @@ int main(int argc, char *argv[]) {
 			"DESCRIPTION\n"
 			"\tThe \"semt\" command is an easy way to manipulate the resolution\n"
 			"\tin the edid.\n\n"
-			"\tIt makes sense to use this command in combination with an altered\n"
-			"\t/etc/X11/xorg.conf file, in which the new edid is integrated with\n"
-			"\tthe following added option:\n"
-			"\t\"Option \"CustomEDID" "DFP:/path/to/modified/edid.bin\"\"\n\n"
+			"\tThe following options are available:\n\n"
+			"\t-d\n"
+			"\t\tenter debug mode\n\n"
+			"\t-v\n"
+			"\t\tprint the version number and quit\n\n"
+			"\t-h\n"
+			"\t\tdisplay this help message and quit\n\n"
+			"\tIt makes sense to use this command in conjunction with an altered\n"
+			"\t/etc/X11/xorg.conf file, in which the new edid is invoked.\n"
+			"\tThis can be done by adding the following line somewhere under\n"
+			"\tthe screen section:\n"
+			"\t'Option \"CustomEDID" "DFP:/path/to/modified/edid.bin\"'\n\n"
 			"AUTHOR\n"
 			"\tThe program was written and is maintained by Gordian Edenhofer.\n"
-			"\tFor further question concerning the program please contact me\n"
+			"\tFor further question concerning the program please contact the author\n"
 			"\tvia <gordian.edenhofer@yahoo.de>\n\n"
-			"\tsemt - Simple Edit Manipulation Tool by Gordian Edenhofer\n"
+			"\tsemt - Simple Edid Manipulation Tool by Gordian Edenhofer\n"
 			"\tis licensed under the Creative Commons Attribution-ShareAlike 3.0\n"
 			"\tUnported License.\n");
 			return 0;
 		default:
-			printf("%s: unknown flag %c\n",argv[0],c);
+			printf("%s: unknown flag %c\n", argv[0], c);
 			return 1;
 		}
 	}
 
-
 	if (argc-optind != 4) {
-		printf("%s: is ment to be used with the following arguments [Inputfile] [X-Resolution] [Y-Resolution] [Outputfile]\n",argv[0]);
+		printf("%s: is ment to be used with the following arguments [Inputfile] [X-Resolution] [Y-Resolution] [Outputfile]\n", argv[0]);
 		return 1;
 	}
-
 	if ((fp = fopen(argv[optind],"r")) == NULL) {
-		printf("%s: cannot read %s\n", argv[0],argv[optind]);
+		printf("%s: cannot read %s\n", argv[0], argv[optind]);
 		return 2;
-	}
-	
+	}	
 	if (fread( edid, 1, 128, fp ) != 128) {
 		printf("%s: cannot read all of %s\n", argv[0], argv[optind]);
 		return 3;
@@ -70,7 +74,6 @@ int main(int argc, char *argv[]) {
 		printf("%s: cannot close input file %s\n", argv[0], argv[optind]);
 		return 4;
 	}
-
 
 	x_res = atoi(argv[optind+1]);
 	y_res = atoi(argv[optind+2]);
@@ -121,6 +124,7 @@ int main(int argc, char *argv[]) {
 		return 7;
 	}
 
+	printf("%s: edid altered successfully.\n", argv[0]);
 
 	return 0;
 }
