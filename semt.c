@@ -24,14 +24,14 @@ int main(int argc, char *argv[]) {
 			return 0;
 		case 'h':
 			printf("NAME\n"
-			"\tsemt - Simple Edid Manipulation Tool Version 1.1\n\n"
+			"\tsemt - Simple EDID Manipulation Tool Version 1.1\n\n"
 			"SYNOPSIS\n"
 			"\tsemt [Inputfile] [X-Resolution] [Y-Resolution] [Outputfile] [Options]\n\n"
 			"EXAMPLE\n"
 			"\tsemt ./PATH/TO/TEMPLATE/EDID 1920 1080 ./edid.bin\n\n"
 			"DESCRIPTION\n"
 			"\tThe \"semt\" command is an easy way to manipulate the resolution\n"
-			"\tin the edid.\n\n"
+			"\tin the EDID.\n\n"
 			"\tThe following options are available:\n\n"
 			"\t-d\n"
 			"\t\tenter debug mode\n\n"
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 			"\t-h\n"
 			"\t\tdisplay this help message and quit\n\n"
 			"\tIt makes sense to use this command in conjunction with an altered\n"
-			"\t/etc/X11/xorg.conf file, in which the new edid is invoked.\n"
+			"\t/etc/X11/xorg.conf file, in which the new EDID is invoked.\n"
 			"\tThis can be done by adding the following line somewhere under\n"
 			"\tthe screen section:\n"
 			"\t'Option \"CustomEDID" "DFP:/path/to/modified/edid.bin\"'\n\n"
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 			"\tThe program was written and is maintained by Gordian Edenhofer.\n"
 			"\tFor further question concerning the program please contact the author\n"
 			"\tvia <gordian.edenhofer@yahoo.de>\n\n"
-			"\tsemt - Simple Edid Manipulation Tool by Gordian Edenhofer\n"
+			"\tsemt - Simple EDID Manipulation Tool by Gordian Edenhofer\n"
 			"\tis licensed under the Creative Commons Attribution-ShareAlike 3.0\n"
 			"\tUnported License.\n");
 			return 0;
