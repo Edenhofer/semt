@@ -1,5 +1,5 @@
 // This Program was written by Gordian Edenhofer on 04/05/14
-// It is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
+// It is licensed under the GPLv2+
 // Simple Edid Manipulation Tool
 // How To:	semt [Inputfile] [X-Resolution] [Y-Resolution] [Outputfile] [Options]
 
@@ -23,34 +23,22 @@ int main(int argc, char *argv[]) {
 			printf("%s: Version 1.1	by Gordian Edenhofer\nThe last revision was made on 25/12/2014 15:50:42\n", argv[0]);
 			return 0;
 		case 'h':
-			printf("NAME\n"
-			"\tsemt - Simple EDID Manipulation Tool Version 1.1\n\n"
-			"SYNOPSIS\n"
-			"\tsemt [Inputfile] [X-Resolution] [Y-Resolution] [Outputfile] [Options]\n\n"
-			"EXAMPLE\n"
-			"\tsemt ./PATH/TO/TEMPLATE/EDID 1920 1080 ./edid.bin\n\n"
-			"DESCRIPTION\n"
-			"\tThe \"semt\" command is an easy way to manipulate the resolution\n"
-			"\tin the EDID.\n\n"
-			"\tThe following options are available:\n\n"
-			"\t-d\n"
-			"\t\tenter debug mode\n\n"
-			"\t-v\n"
-			"\t\tprint the version number and quit\n\n"
-			"\t-h\n"
-			"\t\tdisplay this help message and quit\n\n"
-			"\tIt makes sense to use this command in conjunction with an altered\n"
-			"\t/etc/X11/xorg.conf file, in which the new EDID is invoked.\n"
-			"\tThis can be done by adding the following line somewhere under\n"
-			"\tthe screen section:\n"
-			"\t'Option \"CustomEDID" "DFP:/path/to/modified/edid.bin\"'\n\n"
-			"AUTHOR\n"
-			"\tThe program was written and is maintained by Gordian Edenhofer.\n"
-			"\tFor further question concerning the program please contact the author\n"
-			"\tvia <gordian.edenhofer@yahoo.de>\n\n"
-			"\tsemt - Simple EDID Manipulation Tool by Gordian Edenhofer\n"
-			"\tis licensed under the Creative Commons Attribution-ShareAlike 3.0\n"
-			"\tUnported License.\n");
+			printf("semt - Simple EDID Manipulation Tool Version 1.1\n"
+			"Processing the \"Extended display identification data\" (EDID) in\n"
+			"order to apply a custom resolution. This is helpfull if the\n"
+			"concerning monitor does not provide an EDID itself or its EDID iscorrupted.\n\n"
+			"Usage: semt [-d] <Input File> <X-Resolution> <Y-Resolution> <Output File>\n"
+			"\t-h\tDisplay this help message and quit\n"
+			"\t-v\tPrint the version number and quit\n"
+			"\t-d\tEnter debug mode\n\n"
+			"Examples:\t# semt ~/Downloads/edid.bin 1920 1080 ./custom_edid.bin\n"
+			"\t\t# semt -d ./edid.bin 1680 1050 /etc/X11/edid.bin\n\n"
+			"It makes sense to use this command in conjunction with an altered\n"
+			"/etc/X11/xorg.conf file, in which the new EDID is invoked.\n"
+			"This can be done by adding the following line somewhere under\n"
+			"the screen section:\n"
+			"'Option \"CustomEDID" "DFP:/path/to/modified/edid.bin\"'\n\n"
+			"Copyright (c) Gordian Edenhofer <gordian.edenhofer@gmail.com>\n");
 			return 0;
 		default:
 			printf("%s: unknown flag %c\n", argv[0], c);
@@ -65,7 +53,7 @@ int main(int argc, char *argv[]) {
 	if ((fp = fopen(argv[optind],"r")) == NULL) {
 		printf("%s: cannot read %s\n", argv[0], argv[optind]);
 		return 2;
-	}	
+	}
 	if (fread( edid, 1, 128, fp ) != 128) {
 		printf("%s: cannot read all of %s\n", argv[0], argv[optind]);
 		return 3;
@@ -85,7 +73,7 @@ int main(int argc, char *argv[]) {
 		printf("Writing (x_res/256)*16= %x\t to edid[58]=%x\n", (x_res/256)*16, edid[58]);
 		printf("Writing x_res(mod)256=  %x\t to edid[74]=%x\n", x_res%256, edid[74]);
 		printf("Writing (x_res/256)*16= %x\t to edid[76]=%x\n", (x_res/256)*16, edid[76]);
-		// Y 
+		// Y
 		printf("Writing y_res(mod)256=  %x\t to edid[59]=%x\n", y_res%256, edid[59]);
 		printf("Writing (y_res/256)*16= %x\t to edid[61]=%x\n", (y_res/256)*16, edid[61]);
 		printf("Writing y_res(mod)256=  %x\t to edid[77]=%x\n", y_res%256, edid[77]);

@@ -1,0 +1,56 @@
+.TH SEMT "1" "June 2015" "NONE" "User Commands"
+.SH NAME
+semt \- Simple Edid Manipulation Tool
+.SH SYNOPSIS
+.B semt
+[\fIOPTION\fR]... [\fIINPUT FILE\fR] [\fIX-RESOLUTION\fR] [\fIY-RESOLUTION\fR] [\fIOUTPUT FILE\fR]
+.SH DESCRIPTION
+Processing the "Extended display identification data" (EDID) in order to apply a
+custom resolution. This is helpfull if the concerning monitor does not provide
+an EDID itself or its EDID is corrupted.
+.SH OPTIONS
+.TP
+.BR \-h
+Display this help message and exit
+.TP
+.BR \-v
+Print the version number and quit
+.TP
+.BR \-d
+Enter debug mode
+.SH EXAMPLES
+It makes sense to use this command in conjunction with an altered
+/etc/X11/xorg.conf file, in which the new edid is invoked. This can be done by
+adding the following line somewhere under the screen section: 'Option
+"CustomEDIDDFP:/path/to/modified/edid.bin"'
+
+Rewrite an EDID residing in the Downloads directory with 1920 as the
+X-Resolution and 1080 as the Y-Resolution
+
+.ti 12
+.B semt
+~/Downloads/edid.bin 1920 1080 ./custom_edid.bin
+
+Rewrite a local EDID in debug mode with 1680 x 1050 as the new resolution and
+write the output to /etc/X11/edid.bin
+
+.ti 12
+.B semt
+-d ./edid.bin 1680 1050 /etc/X11/edid.bin
+.SH "BUGS"
+.sp
+Bugs? You must be kidding; there are no bugs in this software\&.
+But if I happen to be wrong, send me an email with as much detail as possible
+to gordian.edenhofer@gmail.com.
+
+.SH AUTHOR
+Written by Gordian Edenhofer.
+.SH COPYRIGHT
+Copyright \(co 2015 Gordian Edenhofer
+License GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH "SEE ALSO"
+.B get-edid,
+.B parse-edid
