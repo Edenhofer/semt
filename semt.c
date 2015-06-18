@@ -1,7 +1,5 @@
-// This Program was written by Gordian Edenhofer on 04/05/14
-// It is licensed under the GPLv2+
-// Simple Edid Manipulation Tool
-// How To:	semt [Inputfile] [X-Resolution] [Y-Resolution] [Outputfile] [Options]
+// This Program was written by Gordian Edenhofer on 04/05/14 and is licensed under the GPLv2+
+// semt - Simple Edid Manipulation Tool
 
 #include <stdio.h>
 #include <stdlib.h>
