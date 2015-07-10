@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 			debug = 1;
 			break;
 		case 'v':
-			printf("%s: Version 1.1	by Gordian Edenhofer\nThe last revision was made on 25/12/2014 15:50:42\n", argv[0]);
+			printf("%s: Version 1.1	by Gordian Edenhofer\nThe last revision was made on 10/07/2015 17:28:33\n", argv[0]);
 			return 0;
 		case 'h':
 			printf("semt - Simple EDID Manipulation Tool Version 1.1\n"
