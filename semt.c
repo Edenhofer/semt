@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 			debug = 1;
 			break;
 		case 'v':
-			printf("%s: Version 1.1	by Gordian Edenhofer\nThe last revision was made on 10/07/2015 17:28:33\n", argv[0]);
+			printf("%s: Version 1.1.1 by Gordian Edenhofer\nThe last revision was made on 03/02/2016 21:35:42\n", argv[0]);
 			return 0;
 		case 'h':
 			printf("semt - Simple EDID Manipulation Tool Version 1.1\n"
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 			"/etc/X11/xorg.conf file, in which the new EDID is invoked.\n"
 			"This can be done by adding the following line somewhere under\n"
 			"the screen section:\n"
-			"'Option \"CustomEDID" "DFP:/path/to/modified/edid.bin\"'\n\n"
+			"    Option \"CustomEDID\" \"CRT-0:/path/to/modified/edid.bin\"\n\n"
 			"Copyright (c) Gordian Edenhofer <gordian.edenhofer@gmail.com>\n");
 			return 0;
 		default:

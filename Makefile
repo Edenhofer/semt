@@ -35,4 +35,6 @@ install:
 	$(INSTALL_DATA) -D ./edid.bin.example $(DESTDIR)$(datarootdir)/$(EXECUTABLE)/edid.bin.example
 
 uninstall:
-	rm $(man1dir)/semt.1 $(bindir)/$(EXECUTABLE) $(datarootdir)/$(EXECUTABLE)/edid.bin.example
+	rm $(man1dir)/semt.1
+	rm $(bindir)/$(EXECUTABLE)
+	rm $(datarootdir)/$(EXECUTABLE)/edid.bin.example
