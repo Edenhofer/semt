@@ -1,0 +1,6 @@
+# Non-static compiler output
+*.out
+
+# Backup files
+*~
+*.bak
